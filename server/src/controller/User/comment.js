@@ -67,23 +67,7 @@ const getcomment = asyncHandler(async (req,res) => {
     );
 })
 
-const updatecomment = asyncHandler(async (req,res) => {
-    console.log(req.body);
-    const comment = {
-        writer: req.user.username,
-        comment: req.body.comment,   
-    }
 
-    const updatedProduct = await comment
-    .findOneAndUpdate(
-        { usernameinstagram: req.body.usernameinstagram },
-        { $push: { comments: comment } },
-        { new: true }
-    );
-
-    
-
-});
    
 
 
