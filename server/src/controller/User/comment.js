@@ -27,8 +27,8 @@ const writecomment = asyncHandler(async (req, res) => {
         );
     } else {
         // Check if the writer has already commented for this Instagram user
-        const writerExists = existingComment.comments.some(c => c.writer === req.user.username);
-        if (!writerExists) {
+        const writerIndex = existingComment.comments.findIndex(c => c.writer === req.user.username);
+        if (writerIndex === -1) {
             // If the writer hasn't commented, update the comment
             const updatedProduct = await commentmodel.findOneAndUpdate(
                 { usernameInstagram: req.body.usernameInstagram },
@@ -39,9 +39,12 @@ const writecomment = asyncHandler(async (req, res) => {
                 new ApiResponse(200, {}, "Commented successfully")
             );
         } else {
-            // If the writer has already commented, return an error
-            throw new ApiError(400, "You have already commented on this post");
-            
+            // If the writer has already commented, update the comment
+            existingComment.comments[writerIndex].comment = req.body.comment;
+            await existingComment.save();
+            return res.status(201).json(
+                new ApiResponse(200, {}, "Comment updated successfully")
+            );
         }
     }
 });
@@ -63,6 +66,25 @@ const getcomment = asyncHandler(async (req,res) => {
         new ApiResponse(200, {comments}, "Comments fetched successfully")
     );
 })
+
+const updatecomment = asyncHandler(async (req,res) => {
+    console.log(req.body);
+    const comment = {
+        writer: req.user.username,
+        comment: req.body.comment,   
+    }
+
+    const updatedProduct = await comment
+    .findOneAndUpdate(
+        { usernameinstagram: req.body.usernameinstagram },
+        { $push: { comments: comment } },
+        { new: true }
+    );
+
+    
+
+});
+   
 
 
 
