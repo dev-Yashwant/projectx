@@ -11,22 +11,24 @@ import { UserDetailsmodel } from "../../models/userloginsignupmodels.js";
 dotenv.config();
 
 const signupUser = asyncHandler(async (req,res) => {
-
-
+    console.log(req.body)
 
     const hashedpassword = await bcrypt.hash(req.body.password,10)
+    console.log(req.body.username)
+
 
     const userSignupDetails = {
         username: req.body.username,
         email: req.body.email,
-        password: hashedpassword,
-        storeStatus: "notexists",
-        storeID: "",
-        userBalance: 0
+        password: hashedpassword
         };
     
+    console.log(1)
     const newUser =  UserDetailsmodel(userSignupDetails);
+    console.log(newUser)
+
     await newUser.save();
+    console.log(1)
 
     return res.status(201).json(
         new ApiResponse(200, {}, "User registered Successfully")
