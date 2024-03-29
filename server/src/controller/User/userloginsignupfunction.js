@@ -20,9 +20,6 @@ const signupUser = asyncHandler(async (req,res) => {
         username: req.body.username,
         email: req.body.email,
         password: hashedpassword,
-        storeStatus: "notexists",
-        storeID: "",
-        userBalance: 0
         };
     
     const newUser =  UserDetailsmodel(userSignupDetails);
@@ -40,7 +37,7 @@ const loginUser = asyncHandler(async (req,res) => {
     let user = await UserDetailsmodel.findOne({ email: req.body.email });
 
     if (!user) {
-        throw new ApiError(400, "Invalid credentials");}
+        throw new ApiError(400, "Invalid user");}
 
     const ismatch = await bcrypt.compare(req.body.password,user.password);
 

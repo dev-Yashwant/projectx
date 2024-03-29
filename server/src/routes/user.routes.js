@@ -18,9 +18,9 @@ userRouter.route('/logout').get(Auth , logoutUser)
 
 userRouter.route('/').get(Auth , getCurrentUser)
 
-userRouter.route('/comment').post(Auth ,writecomment )
+userRouter.route('/comment').post(parseMultipartform.none() ,Auth ,writecomment )
 
-userRouter.route('/comment').get(Auth ,getcomment )
+userRouter.route('/comment').get(parseMultipartform.none() ,Auth ,getcomment )
 
 // userRouter.route("/").post()
 
