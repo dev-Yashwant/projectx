@@ -14,7 +14,8 @@ const commentSchema =new mongoose.Schema({
     {
       writer: {
         type: String,
-        required: true
+        required: true,
+        unique: true,
       },
       comment: {
         type: String,
@@ -24,6 +25,7 @@ const commentSchema =new mongoose.Schema({
   
   ]
 });
+
 
 
 const commentmodel = userConnection.model("commentDb", commentSchema);

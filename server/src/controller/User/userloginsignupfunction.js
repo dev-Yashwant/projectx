@@ -42,7 +42,7 @@ const loginUser = asyncHandler(async (req,res) => {
     let user = await UserDetailsmodel.findOne({ email: req.body.email });
 
     if (!user) {
-        throw new ApiError(400, "Invalid credentials");}
+        throw new ApiError(400, "Invalid user");}
 
     const ismatch = await bcrypt.compare(req.body.password,user.password);
 
