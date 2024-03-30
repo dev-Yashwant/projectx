@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Web Page Overlay Extension",
+  "version": "1.0",
+  "description": "Overlay content on web pages.",
+  "permissions": ["activeTab", "https://*.instagram.com/*", "https://example.com/login"],
+  "content_scripts": [
+    {
+      "matches": ["https://*.instagram.com/*"],
+      "js": ["overlay.js"]
+    }
+  ],
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}

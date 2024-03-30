@@ -1,0 +1,28 @@
+.overlay {
+   
+    top: 0;
+    right: 1000wpx; /* Positioning the overlay at the right side of the screen */
+    bottom: 0;
+    width: 300px; /* Width of the overlay */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 9999; /* Ensure the overlay stays on top of other content */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.overlay-content {
+    text-align: center;
+    color: white;
+}
+
+#closeOverlay {
+    background-color: #b72626;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+    
