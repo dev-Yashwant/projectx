@@ -225,3 +225,9 @@ const dummyComments = [
 dummyComments.forEach(comment => {
     addComment(comment.author, comment.text);
 });
+
+// Add dummy comments
+dummyComments.forEach(comment => {
+  addComment(comment.author, comment.text);
+});
+
