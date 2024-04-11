@@ -3,11 +3,17 @@
   "name": "Web Page Overlay Extension",
   "version": "1.0",
   "description": "Overlay content on web pages.",
-  "permissions": ["activeTab", "https://*.instagram.com/*", "https://example.com/login"],
+  "permissions": ["activeTab", "https://*.instagram.com/*"],
+  "background": {
+      "service_worker": "background.js",
+      "source": "scripts/background.js",
+      "persistent": false
+  },
   "content_scripts": [
     {
-      "matches": ["https://*.instagram.com/*"],
-      "js": ["overlay.js"]
+      "matches": ["https://*.instagram.com/*","https://securitytrails.com/blog/vulnerable-websites-for-penetration-testing"],
+      "js": ["overlay.js","content.js"]
+      
     }
   ],
   "icons": {
