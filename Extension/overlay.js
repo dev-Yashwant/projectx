@@ -167,16 +167,17 @@ const overlayHTML = `
 </html>
 `;
 
-// Inject the overlay HTML directly into the webpage's DOM
+
 document.body.insertAdjacentHTML('beforeend', overlayHTML);
 
-// Function to update progress bar color and value
+
+
+
 function updateProgressBar() {
     const progressElement = document.querySelector('.progress');
-    const progressValue = Math.random() * 100; // Generate random progress value (0 to 100)
-    progressElement.style.width = `${progressValue}%`; // Update width of progress bar
+    const progressValue = Math.random() * 100; 
+    progressElement.style.width = `${progressValue}%`; 
 
-    // Update color based on progress value
     if (progressValue < 20) {
         progressElement.className = 'progress red';
     } else if (progressValue < 40) {
@@ -190,7 +191,6 @@ function updateProgressBar() {
     }
 }
 
-// Function to add a new comment
 function addComment(author, text) {
   const commentsContainer = document.getElementById('comments-container');
   const commentElement = document.createElement('div');
@@ -198,18 +198,15 @@ function addComment(author, text) {
   commentElement.innerHTML = `<strong>${author}:</strong> ${text}`;
   commentsContainer.appendChild(commentElement);
 
-  // Check if the number of comments exceeds the limit
   const commentElements = commentsContainer.querySelectorAll('.comment');
   if (commentElements.length > 3) {
-      commentsContainer.style.overflowY = 'scroll'; // Enable vertical scrolling
+      commentsContainer.style.overflowY = 'scroll'; 
   }
 }
 
 
-// Update progress bar color and value every 2 seconds
 setInterval(updateProgressBar, 2000);
 
-// Dummy comments for demonstration
 const dummyComments = [
     { author: '1', text: 'Great video!' },
     { author: '2', text: 'I love this topic!' },
@@ -221,7 +218,20 @@ const dummyComments = [
     { author: '3', text: 'Can you explain more about...?' },
 ];
 
-// Add dummy comments
 dummyComments.forEach(comment => {
     addComment(comment.author, comment.text);
 });
+
+dummyComments.forEach(comment => {
+  addComment(comment.author, comment.text);
+});
+
+ 
+
+
+
+
+
+
+
+
